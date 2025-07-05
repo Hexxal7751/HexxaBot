@@ -1,0 +1,1 @@
+revoke create on schema public from service_role;

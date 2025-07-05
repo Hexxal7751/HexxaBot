@@ -1,0 +1,1 @@
+grant create on schema public to service_role;
