@@ -1,3 +1,5 @@
+-- This code is served into Supabase's SQL Editor
+
 create or replace function create_guild_tables(guild_id text)
 returns void as $$
 declare
