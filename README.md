@@ -4,7 +4,6 @@
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![Discord.py](https://img.shields.io/badge/Discord.py-2.5.0+-green.svg)](https://discordpy.readthedocs.io/)
 [![Supabase](https://img.shields.io/badge/Supabase-Database-orange.svg)](https://supabase.com/)
-[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![Version](https://img.shields.io/badge/Version-5.0.0-purple.svg)](https://github.com/yourusername/HexxaBot-V5/releases)
 [![Discord](https://img.shields.io/badge/Discord-Server-7289DA.svg)](https://discord.gg/your-invite-link)
 [![Status](https://img.shields.io/badge/Status-Active-brightgreen.svg)](https://github.com/yourusername/HexxaBot-V5)
