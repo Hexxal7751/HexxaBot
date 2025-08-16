@@ -5,7 +5,7 @@
 [![Discord.py](https://img.shields.io/badge/Discord.py-2.5.0+-green.svg)](https://discordpy.readthedocs.io/)
 [![Supabase](https://img.shields.io/badge/Supabase-Database-orange.svg)](https://supabase.com/)
 [![Version](https://img.shields.io/badge/Version-5.0.0-purple.svg)](https://github.com/Hexxal7751/HexxaBot/releases)
-[![Discord](https://img.shields.io/badge/Discord-Server-7289DA.svg)](https://discord.gg/your-invite-link)
+[![Discord](https://img.shields.io/badge/Discord-Server-7289DA.svg)]
 [![Status](https://img.shields.io/badge/Status-Active-brightgreen.svg)](https://github.com/Hexxal7751/HexxaBot)
 
 A feature-rich Discord bot with multiple mini-games, utilities, and comprehensive stats tracking. Built with Discord.py and Supabase for robust data persistence.
