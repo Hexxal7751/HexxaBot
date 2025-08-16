@@ -17,11 +17,15 @@ begin
         )', 'rps_stats_' || safe_id);
     -- Enable RLS and add permissive authenticated policy
     execute format('alter table %I enable row level security', 'rps_stats_' || safe_id);
-    execute format($f$
-        do $$ begin
-            create policy %I on %I for all to authenticated using (true) with check (true);
-        exception when duplicate_object then null; end $$;
-    $f$, 'rls_auth_all_rps_' || safe_id, 'rps_stats_' || safe_id);
+    begin
+        execute format(
+            'create policy %I on %I for all to authenticated using (true) with check (true)',
+            'rls_auth_all_rps_' || safe_id,
+            'rps_stats_' || safe_id
+        );
+    exception
+        when duplicate_object then null;
+    end;
 
     -- Guess Number table
     execute format(
@@ -34,11 +38,15 @@ begin
             guess_gaps jsonb default ''[]''
         )', 'guess_number_stats_' || safe_id);
     execute format('alter table %I enable row level security', 'guess_number_stats_' || safe_id);
-    execute format($f$
-        do $$ begin
-            create policy %I on %I for all to authenticated using (true) with check (true);
-        exception when duplicate_object then null; end $$;
-    $f$, 'rls_auth_all_guess_' || safe_id, 'guess_number_stats_' || safe_id);
+    begin
+        execute format(
+            'create policy %I on %I for all to authenticated using (true) with check (true)',
+            'rls_auth_all_guess_' || safe_id,
+            'guess_number_stats_' || safe_id
+        );
+    exception
+        when duplicate_object then null;
+    end;
 
     -- TicTacToe table
     execute format(
@@ -50,11 +58,15 @@ begin
             total_games integer default 0
         )', 'tictactoe_stats_' || safe_id);
     execute format('alter table %I enable row level security', 'tictactoe_stats_' || safe_id);
-    execute format($f$
-        do $$ begin
-            create policy %I on %I for all to authenticated using (true) with check (true);
-        exception when duplicate_object then null; end $$;
-    $f$, 'rls_auth_all_ttt_' || safe_id, 'tictactoe_stats_' || safe_id);
+    begin
+        execute format(
+            'create policy %I on %I for all to authenticated using (true) with check (true)',
+            'rls_auth_all_ttt_' || safe_id,
+            'tictactoe_stats_' || safe_id
+        );
+    exception
+        when duplicate_object then null;
+    end;
 
     -- Battle table
     execute format(
@@ -65,11 +77,15 @@ begin
             total_games integer default 0
         )', 'battle_stats_' || safe_id);
     execute format('alter table %I enable row level security', 'battle_stats_' || safe_id);
-    execute format($f$
-        do $$ begin
-            create policy %I on %I for all to authenticated using (true) with check (true);
-        exception when duplicate_object then null; end $$;
-    $f$, 'rls_auth_all_battle_' || safe_id, 'battle_stats_' || safe_id);
+    begin
+        execute format(
+            'create policy %I on %I for all to authenticated using (true) with check (true)',
+            'rls_auth_all_battle_' || safe_id,
+            'battle_stats_' || safe_id
+        );
+    exception
+        when duplicate_object then null;
+    end;
 
     -- Flip & Find table
     execute format(
@@ -85,11 +101,15 @@ begin
             star_cards integer default 0
         )', 'flipnfind_stats_' || safe_id);
     execute format('alter table %I enable row level security', 'flipnfind_stats_' || safe_id);
-    execute format($f$
-        do $$ begin
-            create policy %I on %I for all to authenticated using (true) with check (true);
-        exception when duplicate_object then null; end $$;
-    $f$, 'rls_auth_all_flip_' || safe_id, 'flipnfind_stats_' || safe_id);
+    begin
+        execute format(
+            'create policy %I on %I for all to authenticated using (true) with check (true)',
+            'rls_auth_all_flip_' || safe_id,
+            'flipnfind_stats_' || safe_id
+        );
+    exception
+        when duplicate_object then null;
+    end;
 
     -- Kidnapped Jack table
     execute format(
@@ -106,10 +126,14 @@ begin
             placement_sum integer default 0
         )', 'kidnapped_jack_stats_' || safe_id);
     execute format('alter table %I enable row level security', 'kidnapped_jack_stats_' || safe_id);
-    execute format($f$
-        do $$ begin
-            create policy %I on %I for all to authenticated using (true) with check (true);
-        exception when duplicate_object then null; end $$;
-    $f$, 'rls_auth_all_kj_' || safe_id, 'kidnapped_jack_stats_' || safe_id);
+    begin
+        execute format(
+            'create policy %I on %I for all to authenticated using (true) with check (true)',
+            'rls_auth_all_kj_' || safe_id,
+            'kidnapped_jack_stats_' || safe_id
+        );
+    exception
+        when duplicate_object then null;
+    end;
 end;
 $$ language plpgsql;
