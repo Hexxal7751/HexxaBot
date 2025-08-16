@@ -14,7 +14,6 @@ discord-ext-slash==0.3.0
 discord.py==2.5.0
 Flask==3.1.0
 frozenlist==1.5.0
-gotrue==2.11.3
 h11==0.14.0
 h2==4.2.0
 hpack==4.1.0
