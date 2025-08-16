@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games - HexxaBot</title>
+    <link rel="icon" href="logo.jpg" type="image/jpeg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #0a0a1a;
+            --secondary-bg: #12122a;
+            --card-bg: rgba(30, 30, 60, 0.6);
+            --card-border: rgba(100, 100, 200, 0.2);
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0d6;
+            --text-muted: #8888aa;
+            --accent-primary: #00e5ff;
+            --accent-secondary: #a983ff;
+            --accent-tertiary: #ff6bff;
+            --gradient-primary: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            --gradient-secondary: linear-gradient(135deg, var(--accent-secondary), var(--accent-tertiary));
+            --success: #4ade80;
+            --warning: #facc15;
+            --error: #f87171;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(17, 17, 34, 0.8) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(26, 26, 52, 0.8) 0%, transparent 20%),
+                linear-gradient(to bottom, var(--primary-bg), var(--secondary-bg));
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(169, 131, 255, 0.05) 0%, transparent 25%),
+                radial-gradient(circle at 90% 80%, rgba(0, 229, 255, 0.05) 0%, transparent 25%);
+            z-index: -1;
+        }
+
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+
+        .animated-bg::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                transparent,
+                var(--accent-primary),
+                transparent,
+                var(--accent-secondary),
+                transparent,
+                var(--accent-tertiary),
+                transparent
+            );
+            animation: rotate 15s linear infinite;
+            opacity: 0.1;
+        }
+
+        @keyframes rotate {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        nav {
+            padding: 1.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        /* Games Content */
+        .games-content {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .games-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .games-content h2 {
+            font-size: 2rem;
+            margin: 2rem 0 1rem;
+            color: var(--accent-primary);
+        }
+
+        .games-content h3 {
+            font-size: 1.5rem;
+            margin: 1.5rem 0 1rem;
+            color: var(--accent-secondary);
+        }
+        
+        .tips {
+            background: rgba(20, 20, 40, 0.4);
+            border: 1px solid var(--card-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        
+        .tips h3 {
+            color: var(--accent-primary);
+            margin-bottom: 1rem;
+        }
+        
+        .tips ul {
+            padding-left: 1.2rem;
+        }
+        
+        .tips li {
+            margin-bottom: 0.5rem;
+            color: var(--text-secondary);
+        }
+
+        .games-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .games-content ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .games-content li {
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+        }
+
+        .highlight {
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+        .commands {
+            margin-top: 1rem;
+            border-left: 3px solid var(--accent-secondary);
+            padding-left: 0.9rem;
+            font-family: "Courier New", monospace;
+            color: var(--accent-primary);
+        }
+
+        .commands span {
+            display: inline-block;
+            margin: 0.15rem 0;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid var(--card-border);
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-primary);
+        }
+
+        .copyright {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 4rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                gap: 1.25rem;
+            }
+
+            .games-content {
+                padding: 2rem;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+    
+    <div class="container">
+        <!-- Navigation -->
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="logo.jpg" alt="HexxaBot Logo" class="logo-icon">
+                <span>HexxaBot</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="games.html">Games</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="tos.html">Terms</a></li>
+            </ul>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Game Guide</h1>
+            <p>Master every game HexxaBot offers! Each section below details the objective, rules, and helpful slash-commands so your community can jump in without confusion.</p>
+        </section>
+
+        <!-- Games Content -->
+        <section class="games-content">
+            <h2>🎮 Rock Paper Scissors</h2>
+            <p>Play the timeless classic against HexxaBot. Simple yet addicting—perfect for quick duels during chat!</p>
+            <ul>
+                <li><span class="highlight">Objective:</span> Outsmart the bot by choosing a move that beats theirs.</li>
+                <li><span class="highlight">Gameplay:</span> Initiate with <code>/rps</code>. The bot will present interactive buttons so you can pick Rock, Paper, or Scissors.</li>
+                <li><span class="highlight">Statistics:</span> HexxaBot records total wins, losses, and win-rate for each user per server.</li>
+            </ul>
+            <div class="commands">
+                <span>/rps</span><br>
+                <span>/rps-stats [user]</span><br>
+                <span>/rps-lb</span>
+            </div>
+            <div class="tips">
+                <h3>Tips to Master RPS:</h3>
+                <ul>
+                    <li>Watch for patterns in your bot's moves</li>
+                    <li>Avoid repeating the same move multiple times</li>
+                    <li>Try to think one step ahead of the bot</li>
+                    <li>Use psychology - bot may subconsciously avoid repeating losses</li>
+                </ul>
+            </div>
+
+            <h2>🔢 Guess Number</h2>
+            <p>Put your intuition to the test by guessing a secret number between 1-100 in 10 tries or fewer.</p>
+            <ul>
+                <li><span class="highlight">Objective:</span> Reveal the hidden number with the fewest guesses.</li>
+                <li><span class="highlight">Gameplay:</span> Use <code>/guess-num</code>. After each guess, HexxaBot reveals whether the target is higher or lower.</li>
+                <li><span class="highlight">Scoring:</span> Your accuracy percentage is tracked and showcased on the leaderboard.</li>
+            </ul>
+            <div class="commands">
+                <span>/guess-num</span><br>
+                <span>/guess-num-stats [user]</span><br>
+                <span>/guess-num-lb</span>
+            </div>
+            <div class="tips">
+                <h3>Tips to Master Guess Number:</h3>
+                <ul>
+                    <li>Start with 50 to quickly narrow down the range</li>
+                    <li>Use binary search strategy - always guess the middle of the remaining range</li>
+                    <li>Pay attention to the hints - "higher" or "lower"</li>
+                    <li>Try to minimize the number of guesses by making strategic choices</li>
+                </ul>
+            </div>
+
+            <h2>⭕ Tic Tac Toe</h2>
+            <p>Challenge friends in a polished, button-based Tic Tac Toe board directly in chat.</p>
+            <ul>
+                <li><span class="highlight">Objective:</span> Be the first to align three symbols horizontally, vertically, or diagonally.</li>
+                <li><span class="highlight">Gameplay:</span> Start a match with <code>/tictactoe @opponent</code>. Players take turns by clicking board-square buttons.</li>
+                <li><span class="highlight">Fair Play:</span> A 30-second turn timer ensures fast-paced games.</li>
+            </ul>
+            <div class="commands">
+                <span>/tictactoe @user</span>
+            </div>
+            <div class="tips">
+                <h3>Tips to Master Tic Tac Toe:</h3>
+                <ul>
+                    <li>Take the center square if available - it gives you the most winning opportunities</li>
+                    <li>Control the corners - they're part of three potential winning lines</li>
+                    <li>Look for two-in-a-row opportunities to win</li>
+                    <li>Block your opponent when they have two-in-a-row</li>
+                    <li>Force your opponent into positions where they must block you instead of creating their own opportunities</li>
+                </ul>
+            </div>
+
+            <h2>⚔️ Battle</h2>
+            <p>A turn-based RPG mini-game with abilities, critical hits, and multiple modes (PvP only).</p>
+            <ul>
+                <li><span class="highlight">Objective:</span> Reduce your opponent's HP to zero using strategic attacks and heals.</li>
+                <li><span class="highlight">Gameplay:</span> Trigger with <code>/battle @opponent</code> to challenge another player.</li>
+                <li><span class="highlight">Modes:</span> Normal (default), No Healing (limited heals), Poison (damage over time), Regen (heal over time), Stun (chance to stun opponent).</li>
+                <li><span class="highlight">Abilities:</span> Punch, Kick, Defend, Heal (limited). Critical hits and misses add unpredictability!</li>
+                <li><span class="highlight">Progression:</span> Wins, losses, and damage dealt are tracked for bragging rights.</li>
+            </ul>
+            <div class="commands">
+                <span>/battle @user [mode]</span><br>
+                <span>/battle-lb</span>
+            </div>
+            <div class="tips">
+                <h3>Tips to Master Battle:</h3>
+                <ul>
+                    <li>Use <strong>Defend</strong> when your opponent is likely to attack</li>
+                    <li>Save <strong>Heal</strong> for critical moments when your HP is low</li>
+                    <li>Try different game modes for varied strategies</li>
+                    <li>Watch your opponent's patterns to predict their next move</li>
+                </ul>
+            </div>
+
+            <h2>🃏 Flip & Find</h2>
+            <p>A memory-matching card game. Turn cards to find pairs before your opponent does!</p>
+            <ul>
+                <li><span class="highlight">Objective:</span> Collect the most matching pairs on a shared grid.</li>
+                <li><span class="highlight">Gameplay:</span> Run <code>/flipnfind @opponent</code> or play solo against the clock.</li>
+                <li><span class="highlight">Twist:</span> ⭐Star cards award bonus points; mismatches pass the turn.</li>
+            </ul>
+            <div class="commands">
+                <span>/flipnfind [@user]</span><br>
+                <span>/flipnfind-stats [user]</span><br>
+                <span>/flipnfind-lb</span>
+            </div>
+            <div class="tips">
+                <h3>Tips to Master Flip & Find:</h3>
+                <ul>
+                    <li>Memorize the positions of cards as they're revealed</li>
+                    <li>Focus on matching pairs you've already seen</li>
+                    <li>Try to remember the locations of star cards for bonus points</li>
+                    <li>Plan your moves ahead to maximize consecutive matches</li>
+                    <li>Don't rush - take your time to think about the best moves</li>
+                </ul>
+            </div>
+
+            <h2>🎩 The Kidnapped Jack</h2>
+            <p>An exciting card-drawing party game inspired by the classic <em>Old Maid</em>.</p>
+            <ul>
+                <li><span class="highlight">Objective:</span> Avoid holding the single Jack card when the deck runs out.</li>
+                <li><span class="highlight">Gameplay:</span> Start with <code>/kidnapped-jack</code>. Up to 6 players can join within 2 minutes.</li>
+                <li><span class="highlight">Turns:</span> Draw one random card from the next player each turn. Automatic pair removals keep the pace brisk.</li>
+                <li><span class="highlight">Victory:</span> First player eliminated (no cards left) wins. Last player holding the Jack is the kidnapper and is the <em>Loser</em>.</li>
+                <li><span class="highlight">Strategy:</span> Think before you click! The first player eliminated wins!</li>
+            </ul>
+            <div class="commands">
+                <span>/kidnapped-jack</span><br>
+                <span>/kidnapped-jack-stats [user]</span><br>
+                <span>/kidnapped-jack-lb</span>
+            </div>
+            <div class="tips">
+                <h3>Tips to Master The Kidnapped Jack:</h3>
+                <ul>
+                    <li>Think before you click - the first player eliminated wins the match!</li>
+                    <li>Try to get rid of pairs quickly to reduce your card count</li>
+                    <li>Pay attention to how many cards other players have</li>
+                    <li>Strategically choose which player to draw from</li>
+                    <li>Remember that being the Kidnapper is actually losing the game!</li>
+                </ul>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <div class="container">
+        <footer>
+            <div class="footer-content">
+                <a href="index.html" class="footer-logo">
+                    <img src="logo.jpg" alt="HexxaBot Logo" class="logo-icon">
+                    <span>HexxaBot</span>
+                </a>
+                <ul class="footer-links">
+                    <li><a href="games.html">Games</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="tos.html">Terms of Service</a></li>
+                </ul>
+                <p class="copyright">&copy; 2024 HexxaBot. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

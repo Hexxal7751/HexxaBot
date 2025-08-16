@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service - HexxaBot</title>
+    <link rel="icon" href="logo.jpg" type="image/jpeg">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-bg: #0a0a1a;
+            --secondary-bg: #12122a;
+            --card-bg: rgba(30, 30, 60, 0.6);
+            --card-border: rgba(100, 100, 200, 0.2);
+            --text-primary: #ffffff;
+            --text-secondary: #b0b0d6;
+            --text-muted: #8888aa;
+            --accent-primary: #00e5ff;
+            --accent-secondary: #a983ff;
+            --accent-tertiary: #ff6bff;
+            --gradient-primary: linear-gradient(135deg, var(--accent-primary), var(--accent-secondary));
+            --gradient-secondary: linear-gradient(135deg, var(--accent-secondary), var(--accent-tertiary));
+            --success: #4ade80;
+            --warning: #facc15;
+            --error: #f87171;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--primary-bg);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(17, 17, 34, 0.8) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(26, 26, 52, 0.8) 0%, transparent 20%),
+                linear-gradient(to bottom, var(--primary-bg), var(--secondary-bg));
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 10% 20%, rgba(169, 131, 255, 0.05) 0%, transparent 25%),
+                radial-gradient(circle at 90% 80%, rgba(0, 229, 255, 0.05) 0%, transparent 25%);
+            z-index: -1;
+        }
+
+        .animated-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            overflow: hidden;
+        }
+
+        .animated-bg::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(
+                transparent,
+                var(--accent-primary),
+                transparent,
+                var(--accent-secondary),
+                transparent,
+                var(--accent-tertiary),
+                transparent
+            );
+            animation: rotate 15s linear infinite;
+            opacity: 0.1;
+        }
+
+        @keyframes rotate {
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Navigation */
+        nav {
+            padding: 1.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            border-radius: 12px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-primary);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        /* TOS Content */
+        .tos-content {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 20px;
+            padding: 3rem;
+            margin-bottom: 4rem;
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tos-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+        }
+
+        .tos-content h2 {
+            font-size: 2rem;
+            margin: 2rem 0 1rem;
+            color: var(--accent-primary);
+        }
+
+        .tos-content h3 {
+            font-size: 1.5rem;
+            margin: 1.5rem 0 1rem;
+            color: var(--accent-secondary);
+        }
+
+        .tos-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .tos-content ul {
+            padding-left: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tos-content li {
+            color: var(--text-secondary);
+            margin-bottom: 0.75rem;
+        }
+
+        .highlight {
+            color: var(--accent-primary);
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid var(--card-border);
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--accent-primary);
+        }
+
+        .copyright {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 4rem 0;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                gap: 1.25rem;
+            }
+
+            .tos-content {
+                padding: 2rem;
+            }
+
+            .footer-links {
+                flex-wrap: wrap;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="animated-bg"></div>
+    
+    <div class="container">
+        <!-- Navigation -->
+        <nav>
+            <a href="index.html" class="logo">
+                <img src="logo.jpg" alt="HexxaBot Logo" class="logo-icon">
+                <span>HexxaBot</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="games.html">Games</a></li>
+                <li><a href="privacy.html">Privacy</a></li>
+                <li><a href="tos.html">Terms</a></li>
+            </ul>
+        </nav>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>Terms of Service</h1>
+            <p>Please read these terms carefully before using HexxaBot.</p>
+        </section>
+
+        <!-- TOS Content -->
+        <section class="tos-content">
+            <h2>1. Introduction</h2>
+            <p>Welcome to HexxaBot! These Terms of Service govern your use of HexxaBot, a Discord bot designed to provide entertainment through various games and activities. By inviting HexxaBot to your server or using its features, you agree to these terms.</p>
+
+            <h2>2. Bot Features</h2>
+            <p>HexxaBot provides the following features (with more being added regularly):</p>
+            <ul>
+                <li><span class="highlight">Game Commands:</span> Play a variety of games including Rock Paper Scissors, Guess Number, Tic Tac Toe, Battle, and Flip & Find</li>
+                <li><span class="highlight">Leaderboards:</span> Track your performance and compete with others in your server</li>
+                <li><span class="highlight">Statistics:</span> View detailed game stats and progress</li>
+                <li><span class="highlight">DM-based Features:</span> Some games and invitations may use Discord DMs for gameplay or notifications</li>
+            </ul>
+
+            <h2>3. User Responsibilities</h2>
+            <p>As a user of HexxaBot, you agree to:</p>
+            <ul>
+                <li>Use the bot in accordance with Discord's Terms of Service and Community Guidelines</li>
+                <li>Not exploit bugs or glitches in the bot's functionality</li>
+                <li>Not attempt to reverse-engineer, modify, or redistribute the bot's code</li>
+                <li>Report any bugs or issues to the bot owner rather than exploiting them</li>
+            </ul>
+
+            <h2>4. Data Collection & Privacy</h2>
+            <p>HexxaBot collects and stores game-related data (scores, statistics, leaderboards, and game actions) to provide its core services. This data is stored securely in <strong>Supabase</strong> and is only used for bot functionality. For full details, please refer to our <a href="privacy.html">Privacy Policy</a>.</p>
+
+            <h2>5. Service Availability</h2>
+            <p>While HexxaBot strives to maintain consistent uptime, we do not guarantee uninterrupted service. The bot may experience downtime due to:</p>
+            <ul>
+                <li>Scheduled maintenance and updates</li>
+                <li>Discord API issues or limitations</li>
+                <li>Unexpected technical difficulties</li>
+                <li>Resource constraints or hosting issues</li>
+            </ul>
+
+            <h2>6. Administrative Controls</h2>
+            <p>Server administrators have access to data management commands, including the ability to purge data for users who have left the server or to request data removal. These commands should be used responsibly and with appropriate permissions.</p>
+
+            <h2>7. Ongoing Development</h2>
+            <p>HexxaBot is actively developed and new features are added regularly. Features, commands, and data handling may change over time. We encourage users to review the Terms of Service and Privacy Policy periodically.</p>
+
+            <h2>8. Termination of Access</h2>
+            <p>HexxaBot reserves the right to restrict or terminate access to the bot for users or servers that violate these terms, abuse the service, or disrupt normal operations.</p>
+
+            <h2>9. Liability Disclaimer</h2>
+            <p>HexxaBot is provided <strong>as-is</strong> without warranties of any kind. We are not responsible for any direct or indirect damages resulting from the use of this bot or its features.</p>
+
+            <h2>10. Changes to Terms</h2>
+            <p>These terms may be updated at any time without prior notice. Continued use of the bot constitutes acceptance of any modifications to these terms. The latest version is always available on the bot's website.</p>
+
+            <h2>Contact Information</h2>
+            <p>If you have any questions about these Terms of Service or need to report issues, please contact the bot owner at:</p>
+            <p class="highlight">📧 hexxal.7751@gmail.com</p>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <div class="container">
+        <footer>
+            <div class="footer-content">
+                <a href="index.html" class="footer-logo">
+                    <img src="logo.jpg" alt="HexxaBot Logo" class="logo-icon">
+                    <span>HexxaBot</span>
+                </a>
+                <ul class="footer-links">
+                    <li><a href="games.html">Games</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="tos.html">Terms of Service</a></li>
+                </ul>
+                <p class="copyright">&copy; 2024 HexxaBot. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>
