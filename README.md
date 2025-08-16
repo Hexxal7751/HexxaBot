@@ -4,20 +4,20 @@
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![Discord.py](https://img.shields.io/badge/Discord.py-2.5.0+-green.svg)](https://discordpy.readthedocs.io/)
 [![Supabase](https://img.shields.io/badge/Supabase-Database-orange.svg)](https://supabase.com/)
-[![Version](https://img.shields.io/badge/Version-5.0.0-purple.svg)](https://github.com/Hexxal7751/HexxaBot-V5/releases)
+[![Version](https://img.shields.io/badge/Version-5.0.0-purple.svg)](https://github.com/Hexxal7751/HexxaBot/releases)
 [![Discord](https://img.shields.io/badge/Discord-Server-7289DA.svg)](https://discord.gg/your-invite-link)
-[![Status](https://img.shields.io/badge/Status-Active-brightgreen.svg)](https://github.com/Hexxal7751/HexxaBot-V5)
+[![Status](https://img.shields.io/badge/Status-Active-brightgreen.svg)](https://github.com/Hexxal7751/HexxaBot)
 
 A feature-rich Discord bot with multiple mini-games, utilities, and comprehensive stats tracking. Built with Discord.py and Supabase for robust data persistence.
 
 ## 🚀 Features
 
-[![Games](https://img.shields.io/badge/Games-6%20Mini--Games-red.svg)](https://github.com/Hexxal7751/HexxaBot-V5#games-available)
-[![Stats](https://img.shields.io/badge/Stats-Tracking-blue.svg)](https://github.com/Hexxal7751/HexxaBot-V5#stats--leaderboards)
-[![UI](https://img.shields.io/badge/UI-Interactive-green.svg)](https://github.com/Hexxal7751/HexxaBot-V5#games-available)
+[![Games](https://img.shields.io/badge/Games-6%20Mini--Games-red.svg)](https://github.com/Hexxal7751/HexxaBot#games-available)
+[![Stats](https://img.shields.io/badge/Stats-Tracking-blue.svg)](https://github.com/Hexxal7751/HexxaBot#stats--leaderboards)
+[![UI](https://img.shields.io/badge/UI-Interactive-green.svg)](https://github.com/Hexxal7751/HexxaBot#games-available)
 [![Database](https://img.shields.io/badge/Database-Supabase-orange.svg)](https://supabase.com/)
-[![Multi-Server](https://img.shields.io/badge/Multi--Server-Support-purple.svg)](https://github.com/Hexxal7751/HexxaBot-V5#setup-instructions)
-[![Admin](https://img.shields.io/badge/Admin-Tools-yellow.svg)](https://github.com/Hexxal7751/HexxaBot-V5#admin-commands)
+[![Multi-Server](https://img.shields.io/badge/Multi--Server-Support-purple.svg)](https://github.com/Hexxal7751/HexxaBot#setup-instructions)
+[![Admin](https://img.shields.io/badge/Admin-Tools-yellow.svg)](https://github.com/Hexxal7751/HexxaBot#admin-commands)
 
 - **6 Mini-Games** with full stats tracking and leaderboards
 - **Interactive UI** with buttons and real-time updates
@@ -29,9 +29,9 @@ A feature-rich Discord bot with multiple mini-games, utilities, and comprehensiv
 ## 🎮 Games Available
 
 ### 🃏 The Kidnapped Jack
-[![Card Game](https://img.shields.io/badge/Card%20Game-Old%20Maid%20Variant-red.svg)](https://github.com/Hexxal7751/HexxaBot-V5#-the-kidnapped-jack)
-[![Players](https://img.shields.io/badge/Players-2--8-green.svg)](https://github.com/Hexxal7751/HexxaBot-V5#-the-kidnapped-jack)
-[![Stats](https://img.shields.io/badge/Stats-Tracked-blue.svg)](https://github.com/Hexxal7751/HexxaBot-V5#-the-kidnapped-jack)
+[![Card Game](https://img.shields.io/badge/Card%20Game-Old%20Maid%20Variant-red.svg)](https://github.com/Hexxal7751/HexxaBot#-the-kidnapped-jack)
+[![Players](https://img.shields.io/badge/Players-2--8-green.svg)](https://github.com/Hexxal7751/HexxaBot#-the-kidnapped-jack)
+[![Stats](https://img.shields.io/badge/Stats-Tracked-blue.svg)](https://github.com/Hexxal7751/HexxaBot#-the-kidnapped-jack)
 
 A strategic card game based on "Old Maid" where players try to avoid being left with the Jack of Hearts!
 
@@ -53,10 +53,10 @@ A strategic card game based on "Old Maid" where players try to avoid being left 
 ---
 
 ### ⚔️ Battle
-[![Combat](https://img.shields.io/badge/Combat-Turn--Based-red.svg)](https://github.com/Hexxal7751/HexxaBot-V5#-battle)
-[![Modes](https://img.shields.io/badge/Modes-6%20Game%20Modes-green.svg)](https://github.com/Hexxal7751/HexxaBot-V5#-battle)
-[![Actions](https://img.shields.io/badge/Actions-5%20Combat%20Actions-blue.svg)](https://github.com/Hexxal7751/HexxaBot-V5#-battle)
-[![Strategy](https://img.shields.io/badge/Strategy-Deep%20Tactics-purple.svg)](https://github.com/Hexxal7751/HexxaBot-V5#-battle)
+[![Combat](https://img.shields.io/badge/Combat-Turn--Based-red.svg)](https://github.com/Hexxal7751/HexxaBot#-battle)
+[![Modes](https://img.shields.io/badge/Modes-6%20Game%20Modes-green.svg)](https://github.com/Hexxal7751/HexxaBot#-battle)
+[![Actions](https://img.shields.io/badge/Actions-5%20Combat%20Actions-blue.svg)](https://github.com/Hexxal7751/HexxaBot#-battle)
+[![Strategy](https://img.shields.io/badge/Strategy-Deep%20Tactics-purple.svg)](https://github.com/Hexxal7751/HexxaBot#-battle)
 
 Epic turn-based combat system with multiple game modes and strategic depth!
 
@@ -86,10 +86,10 @@ Epic turn-based combat system with multiple game modes and strategic depth!
 ---
 
 ### 🎴 Flip & Find
-[![Memory](https://img.shields.io/badge/Memory-Card%20Matching-red.svg)](https://github.com/Hexxal7751/HexxaBot-V5#-flip--find)
-[![Difficulty](https://img.shields.io/badge/Difficulty-4%20Levels-green.svg)](https://github.com/Hexxal7751/HexxaBot-V5#-flip--find)
-[![Star Cards](https://img.shields.io/badge/Star%20Cards-Special%20Items-blue.svg)](https://github.com/Hexxal7751/HexxaBot-V5#-flip--find)
-[![Timed](https://img.shields.io/badge/Timed-Modes%20Available-purple.svg)](https://github.com/Hexxal7751/HexxaBot-V5#-flip--find)
+[![Memory](https://img.shields.io/badge/Memory-Card%20Matching-red.svg)](https://github.com/Hexxal7751/HexxaBot#-flip--find)
+[![Difficulty](https://img.shields.io/badge/Difficulty-4%20Levels-green.svg)](https://github.com/Hexxal7751/HexxaBot#-flip--find)
+[![Star Cards](https://img.shields.io/badge/Star%20Cards-Special%20Items-blue.svg)](https://github.com/Hexxal7751/HexxaBot#-flip--find)
+[![Timed](https://img.shields.io/badge/Timed-Modes%20Available-purple.svg)](https://github.com/Hexxal7751/HexxaBot#-flip--find)
 
 Memory card matching game with multiple difficulties and special mechanics!
 
@@ -117,10 +117,10 @@ Memory card matching game with multiple difficulties and special mechanics!
 ---
 
 ### 🎮 Tic Tac Toe
-[![Classic](https://img.shields.io/badge/Classic-X%27s%20%26%20O%27s-red.svg)](https://github.com/Hexxal7751/HexxaBot-V5#-tic-tac-toe)
-[![Interactive](https://img.shields.io/badge/Interactive-Button%20Grid-green.svg)](https://github.com/Hexxal7751/HexxaBot-V5#-tic-tac-toe)
-[![AI](https://img.shields.io/badge/AI-Bot%20Opponents-blue.svg)](https://github.com/Hexxal7751/HexxaBot-V5#-tic-tac-toe)
-[![Real-time](https://img.shields.io/badge/Real--time-Updates-purple.svg)](https://github.com/Hexxal7751/HexxaBot-V5#-tic-tac-toe)
+[![Classic](https://img.shields.io/badge/Classic-X%27s%20%26%20O%27s-red.svg)](https://github.com/Hexxal7751/HexxaBot#-tic-tac-toe)
+[![Interactive](https://img.shields.io/badge/Interactive-Button%20Grid-green.svg)](https://github.com/Hexxal7751/HexxaBot#-tic-tac-toe)
+[![AI](https://img.shields.io/badge/AI-Bot%20Opponents-blue.svg)](https://github.com/Hexxal7751/HexxaBot#-tic-tac-toe)
+[![Real-time](https://img.shields.io/badge/Real--time-Updates-purple.svg)](https://github.com/Hexxal7751/HexxaBot#-tic-tac-toe)
 
 Classic X's and O's with modern Discord integration!
 
@@ -142,10 +142,10 @@ Classic X's and O's with modern Discord integration!
 ---
 
 ### 🎲 Rock Paper Scissors
-[![Quick](https://img.shields.io/badge/Quick-Instant%20Play-red.svg)](https://github.com/Hexxal7751/HexxaBot-V5#-rock-paper-scissors)
-[![Simple](https://img.shields.io/badge/Simple-Easy%20to%20Learn-green.svg)](https://github.com/Hexxal7751/HexxaBot-V5#-rock-paper-scissors)
-[![Emoji](https://img.shields.io/badge/Emoji-Reactions-blue.svg)](https://github.com/Hexxal7751/HexxaBot-V5#-rock-paper-scissors)
-[![Leaderboard](https://img.shields.io/badge/Leaderboard-Rankings-purple.svg)](https://github.com/Hexxal7751/HexxaBot-V5#-rock-paper-scissors)
+[![Quick](https://img.shields.io/badge/Quick-Instant%20Play-red.svg)](https://github.com/Hexxal7751/HexxaBot#-rock-paper-scissors)
+[![Simple](https://img.shields.io/badge/Simple-Easy%20to%20Learn-green.svg)](https://github.com/Hexxal7751/HexxaBot#-rock-paper-scissors)
+[![Emoji](https://img.shields.io/badge/Emoji-Reactions-blue.svg)](https://github.com/Hexxal7751/HexxaBot#-rock-paper-scissors)
+[![Leaderboard](https://img.shields.io/badge/Leaderboard-Rankings-purple.svg)](https://github.com/Hexxal7751/HexxaBot#-rock-paper-scissors)
 
 Quick and simple RPS with stats tracking!
 
@@ -171,10 +171,10 @@ Quick and simple RPS with stats tracking!
 ---
 
 ### 🔢 Guess Number
-[![Logic](https://img.shields.io/badge/Logic-Number%20Guessing-red.svg)](https://github.com/Hexxal7751/HexxaBot-V5#-guess-number)
-[![Hints](https://img.shields.io/badge/Hints-Higher%2FLower-green.svg)](https://github.com/Hexxal7751/HexxaBot-V5#-guess-number)
-[![Attempts](https://img.shields.io/badge/Attempts-10%20Tries-blue.svg)](https://github.com/Hexxal7751/HexxaBot-V5#-guess-number)
-[![Patterns](https://img.shields.io/badge/Patterns-Tracking-purple.svg)](https://github.com/Hexxal7751/HexxaBot-V5#-guess-number)
+[![Logic](https://img.shields.io/badge/Logic-Number%20Guessing-red.svg)](https://github.com/Hexxal7751/HexxaBot#-guess-number)
+[![Hints](https://img.shields.io/badge/Hints-Higher%2FLower-green.svg)](https://github.com/Hexxal7751/HexxaBot#-guess-number)
+[![Attempts](https://img.shields.io/badge/Attempts-10%20Tries-blue.svg)](https://github.com/Hexxal7751/HexxaBot#-guess-number)
+[![Patterns](https://img.shields.io/badge/Patterns-Tracking-purple.svg)](https://github.com/Hexxal7751/HexxaBot#-guess-number)
 
 Number guessing game with hints and statistics!
 
@@ -198,11 +198,11 @@ Number guessing game with hints and statistics!
 
 ## 🛠️ Utility Commands
 
-[![Info](https://img.shields.io/badge/Info-Commands-blue.svg)](https://github.com/Hexxal7751/HexxaBot-V5#information-commands)
-[![Fun](https://img.shields.io/badge/Fun-Commands-green.svg)](https://github.com/Hexxal7751/HexxaBot-V5#fun-commands)
-[![Admin](https://img.shields.io/badge/Admin-Commands-red.svg)](https://github.com/Hexxal7751/HexxaBot-V5#admin-commands)
-[![Math](https://img.shields.io/badge/Math-Calculator-orange.svg)](https://github.com/Hexxal7751/HexxaBot-V5#fun-commands)
-[![Dice](https://img.shields.io/badge/Dice-Rolling-purple.svg)](https://github.com/Hexxal7751/HexxaBot-V5#fun-commands)
+[![Info](https://img.shields.io/badge/Info-Commands-blue.svg)](https://github.com/Hexxal7751/HexxaBot#information-commands)
+[![Fun](https://img.shields.io/badge/Fun-Commands-green.svg)](https://github.com/Hexxal7751/HexxaBot#fun-commands)
+[![Admin](https://img.shields.io/badge/Admin-Commands-red.svg)](https://github.com/Hexxal7751/HexxaBot#admin-commands)
+[![Math](https://img.shields.io/badge/Math-Calculator-orange.svg)](https://github.com/Hexxal7751/HexxaBot#fun-commands)
+[![Dice](https://img.shields.io/badge/Dice-Rolling-purple.svg)](https://github.com/Hexxal7751/HexxaBot#fun-commands)
 
 ### Information Commands
 - `/ping` - Check bot latency and response time
@@ -222,10 +222,10 @@ Number guessing game with hints and statistics!
 
 ## 📊 Stats & Leaderboards
 
-[![Stats](https://img.shields.io/badge/Stats-Comprehensive%20Tracking-blue.svg)](https://github.com/Hexxal7751/HexxaBot-V5#stats--leaderboards)
-[![Leaderboards](https://img.shields.io/badge/Leaderboards-Top%2010-red.svg)](https://github.com/Hexxal7751/HexxaBot-V5#stats--leaderboards)
-[![Privacy](https://img.shields.io/badge/Privacy-User%20Control-green.svg)](https://github.com/Hexxal7751/HexxaBot-V5#stats--leaderboards)
-[![Server](https://img.shields.io/badge/Server-Specific-orange.svg)](https://github.com/Hexxal7751/HexxaBot-V5#stats--leaderboards)
+[![Stats](https://img.shields.io/badge/Stats-Comprehensive%20Tracking-blue.svg)](https://github.com/Hexxal7751/HexxaBot#stats--leaderboards)
+[![Leaderboards](https://img.shields.io/badge/Leaderboards-Top%2010-red.svg)](https://github.com/Hexxal7751/HexxaBot#stats--leaderboards)
+[![Privacy](https://img.shields.io/badge/Privacy-User%20Control-green.svg)](https://github.com/Hexxal7751/HexxaBot#stats--leaderboards)
+[![Server](https://img.shields.io/badge/Server-Specific-orange.svg)](https://github.com/Hexxal7751/HexxaBot#stats--leaderboards)
 
 Every game includes comprehensive statistics tracking:
 
@@ -249,11 +249,11 @@ Every game includes comprehensive statistics tracking:
 
 ## 🚀 Setup Instructions
 
-[![Setup](https://img.shields.io/badge/Setup-Easy%20Installation-green.svg)](https://github.com/Hexxal7751/HexxaBot-V5#setup-instructions)
+[![Setup](https://img.shields.io/badge/Setup-Easy%20Installation-green.svg)](https://github.com/Hexxal7751/HexxaBot#setup-instructions)
 [![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)
 [![Discord](https://img.shields.io/badge/Discord-Bot%20Token-purple.svg)](https://discord.com/developers/applications)
 [![Supabase](https://img.shields.io/badge/Supabase-Database-orange.svg)](https://supabase.com/)
-[![Dependencies](https://img.shields.io/badge/Dependencies-Auto%20Install-red.svg)](https://github.com/Hexxal7751/HexxaBot-V5#setup-instructions)
+[![Dependencies](https://img.shields.io/badge/Dependencies-Auto%20Install-red.svg)](https://github.com/Hexxal7751/HexxaBot#setup-instructions)
 
 ### Prerequisites
 - Python 3.8 or higher
@@ -263,7 +263,7 @@ Every game includes comprehensive statistics tracking:
 ### 1. Clone the Repository
 ```bash
 git clone <repository-url>
-cd HexxaBot-V5
+cd HexxaBot
 ```
 
 ### 2. Install Dependencies
@@ -335,11 +335,6 @@ HexxaBot V5/
 │   └── revoke.sql        # Permission removal
 ├── templates/
 │   └── status_index_root.html
-├── Webpage/
-│   ├── index.html
-│   ├── privacy.html
-│   ├── tos.html
-│   └── logo.jpg
 ├── keep_alive.py         # Keeps bot running
 ├── requirements.txt      # Python dependencies
 └── README.md            # This file
@@ -349,11 +344,11 @@ HexxaBot V5/
 
 ## 🔧 Technical Details
 
-[![Architecture](https://img.shields.io/badge/Architecture-Modular-blue.svg)](https://github.com/Hexxal7751/HexxaBot-V5#technical-details)
+[![Architecture](https://img.shields.io/badge/Architecture-Modular-blue.svg)](https://github.com/Hexxal7751/HexxaBot#technical-details)
 [![Database](https://img.shields.io/badge/Database-PostgreSQL-orange.svg)](https://supabase.com/)
 [![API](https://img.shields.io/badge/API-Discord.py-green.svg)](https://discordpy.readthedocs.io/)
-[![Security](https://img.shields.io/badge/Security-Best%20Practices-red.svg)](https://github.com/Hexxal7751/HexxaBot-V5#security--privacy)
-[![Performance](https://img.shields.io/badge/Performance-Optimized-purple.svg)](https://github.com/Hexxal7751/HexxaBot-V5#technical-details)
+[![Security](https://img.shields.io/badge/Security-Best%20Practices-red.svg)](https://github.com/Hexxal7751/HexxaBot#security--privacy)
+[![Performance](https://img.shields.io/badge/Performance-Optimized-purple.svg)](https://github.com/Hexxal7751/HexxaBot#technical-details)
 
 ### Dependencies
 - **discord.py**: Discord API wrapper
@@ -385,11 +380,11 @@ All commands use Discord's slash command system with:
 
 ## 🛡️ Security & Privacy
 
-[![Security](https://img.shields.io/badge/Security-Protected-red.svg)](https://github.com/Hexxal7751/HexxaBot-V5#security--privacy)
-[![Privacy](https://img.shields.io/badge/Privacy-First-green.svg)](https://github.com/Hexxal7751/HexxaBot-V5#security--privacy)
-[![GDPR](https://img.shields.io/badge/GDPR-Compliant-blue.svg)](https://github.com/Hexxal7751/HexxaBot-V5#security--privacy)
-[![Data](https://img.shields.io/badge/Data-Minimal%20Collection-orange.svg)](https://github.com/Hexxal7751/HexxaBot-V5#security--privacy)
-[![Isolation](https://img.shields.io/badge/Isolation-Server%20Specific-purple.svg)](https://github.com/Hexxal7751/HexxaBot-V5#security--privacy)
+[![Security](https://img.shields.io/badge/Security-Protected-red.svg)](https://github.com/Hexxal7751/HexxaBot#security--privacy)
+[![Privacy](https://img.shields.io/badge/Privacy-First-green.svg)](https://github.com/Hexxal7751/HexxaBot#security--privacy)
+[![GDPR](https://img.shields.io/badge/GDPR-Compliant-blue.svg)](https://github.com/Hexxal7751/HexxaBot#security--privacy)
+[![Data](https://img.shields.io/badge/Data-Minimal%20Collection-orange.svg)](https://github.com/Hexxal7751/HexxaBot#security--privacy)
+[![Isolation](https://img.shields.io/badge/Isolation-Server%20Specific-purple.svg)](https://github.com/Hexxal7751/HexxaBot#security--privacy)
 
 ### Data Protection
 - **Minimal Data Collection**: Only game-related statistics
@@ -406,10 +401,10 @@ All commands use Discord's slash command system with:
 
 ## 🐛 Troubleshooting
 
-[![Support](https://img.shields.io/badge/Support-Help%20Available-blue.svg)](https://github.com/Hexxal7751/HexxaBot-V5#troubleshooting)
-[![Issues](https://img.shields.io/badge/Issues-Common%20Solutions-green.svg)](https://github.com/Hexxal7751/HexxaBot-V5#troubleshooting)
-[![Debug](https://img.shields.io/badge/Debug-Logging-red.svg)](https://github.com/Hexxal7751/HexxaBot-V5#troubleshooting)
-[![Setup](https://img.shields.io/badge/Setup-Verification-orange.svg)](https://github.com/Hexxal7751/HexxaBot-V5#troubleshooting)
+[![Support](https://img.shields.io/badge/Support-Help%20Available-blue.svg)](https://github.com/Hexxal7751/HexxaBot#troubleshooting)
+[![Issues](https://img.shields.io/badge/Issues-Common%20Solutions-green.svg)](https://github.com/Hexxal7751/HexxaBot#troubleshooting)
+[![Debug](https://img.shields.io/badge/Debug-Logging-red.svg)](https://github.com/Hexxal7751/HexxaBot#troubleshooting)
+[![Setup](https://img.shields.io/badge/Setup-Verification-orange.svg)](https://github.com/Hexxal7751/HexxaBot#troubleshooting)
 
 ### Common Issues
 
@@ -438,11 +433,11 @@ All commands use Discord's slash command system with:
 
 ## 📈 Future Features
 
-[![Roadmap](https://img.shields.io/badge/Roadmap-Active%20Development-blue.svg)](https://github.com/Hexxal7751/HexxaBot-V5#future-features)
-[![Features](https://img.shields.io/badge/Features-Planned-green.svg)](https://github.com/Hexxal7751/HexxaBot-V5#future-features)
-[![Tournaments](https://img.shields.io/badge/Tournaments-Coming%20Soon-red.svg)](https://github.com/Hexxal7751/HexxaBot-V5#future-features)
-[![Analytics](https://img.shields.io/badge/Analytics-Advanced%20Stats-orange.svg)](https://github.com/Hexxal7751/HexxaBot-V5#future-features)
-[![Mobile](https://img.shields.io/badge/Mobile-Web%20Dashboard-purple.svg)](https://github.com/Hexxal7751/HexxaBot-V5#future-features)
+[![Roadmap](https://img.shields.io/badge/Roadmap-Active%20Development-blue.svg)](https://github.com/Hexxal7751/HexxaBot#future-features)
+[![Features](https://img.shields.io/badge/Features-Planned-green.svg)](https://github.com/Hexxal7751/HexxaBot#future-features)
+[![Tournaments](https://img.shields.io/badge/Tournaments-Coming%20Soon-red.svg)](https://github.com/Hexxal7751/HexxaBot#future-features)
+[![Analytics](https://img.shields.io/badge/Analytics-Advanced%20Stats-orange.svg)](https://github.com/Hexxal7751/HexxaBot#future-features)
+[![Mobile](https://img.shields.io/badge/Mobile-Web%20Dashboard-purple.svg)](https://github.com/Hexxal7751/HexxaBot#future-features)
 
 - [ ] Additional game modes for existing games
 - [ ] Tournament system
@@ -455,11 +450,11 @@ All commands use Discord's slash command system with:
 
 ## 🤝 Contributing
 
-[![Contributions](https://img.shields.io/badge/Contributions-Welcome-green.svg)](https://github.com/Hexxal7751/HexxaBot-V5#contributing)
-[![PRs](https://img.shields.io/badge/PRs-Welcome-blue.svg)](https://github.com/Hexxal7751/HexxaBot-V5/pulls)
-[![Issues](https://img.shields.io/badge/Issues-Welcome-red.svg)](https://github.com/Hexxal7751/HexxaBot-V5/issues)
-[![Code](https://img.shields.io/badge/Code-Quality-orange.svg)](https://github.com/Hexxal7751/HexxaBot-V5#contributing)
-[![Testing](https://img.shields.io/badge/Testing-Required-purple.svg)](https://github.com/Hexxal7751/HexxaBot-V5#contributing)
+[![Contributions](https://img.shields.io/badge/Contributions-Welcome-green.svg)](https://github.com/Hexxal7751/HexxaBot#contributing)
+[![PRs](https://img.shields.io/badge/PRs-Welcome-blue.svg)](https://github.com/Hexxal7751/HexxaBot/pulls)
+[![Issues](https://img.shields.io/badge/Issues-Welcome-red.svg)](https://github.com/Hexxal7751/HexxaBot/issues)
+[![Code](https://img.shields.io/badge/Code-Quality-orange.svg)](https://github.com/Hexxal7751/HexxaBot#contributing)
+[![Testing](https://img.shields.io/badge/Testing-Required-purple.svg)](https://github.com/Hexxal7751/HexxaBot#contributing)
 
 Contributions are welcome! Please feel free to submit pull requests or open issues for bugs and feature requests.
 
@@ -475,8 +470,8 @@ Contributions are welcome! Please feel free to submit pull requests or open issu
 ## 📄 License
 
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![Open Source](https://img.shields.io/badge/Open%20Source-Yes-green.svg)](https://github.com/Hexxal7751/HexxaBot-V5)
-[![Free](https://img.shields.io/badge/Free-Forever-blue.svg)](https://github.com/Hexxal7751/HexxaBot-V5)
+[![Open Source](https://img.shields.io/badge/Open%20Source-Yes-green.svg)](https://github.com/Hexxal7751/HexxaBot)
+[![Free](https://img.shields.io/badge/Free-Forever-blue.svg)](https://github.com/Hexxal7751/HexxaBot)
 
 This project is licensed under the MIT License - see the LICENSE file for details.
 
@@ -486,8 +481,8 @@ This project is licensed under the MIT License - see the LICENSE file for detail
 
 [![Discord.py](https://img.shields.io/badge/Discord.py-Community-blue.svg)](https://discordpy.readthedocs.io/)
 [![Supabase](https://img.shields.io/badge/Supabase-Team-orange.svg)](https://supabase.com/)
-[![Contributors](https://img.shields.io/badge/Contributors-Thank%20You-green.svg)](https://github.com/Hexxal7751/HexxaBot-V5/graphs/contributors)
-[![Users](https://img.shields.io/badge/Users-Awesome-purple.svg)](https://github.com/Hexxal7751/HexxaBot-V5)
+[![Contributors](https://img.shields.io/badge/Contributors-Thank%20You-green.svg)](https://github.com/Hexxal7751/HexxaBot/graphs/contributors)
+[![Users](https://img.shields.io/badge/Users-Awesome-purple.svg)](https://github.com/Hexxal7751/HexxaBot)
 
 - Discord.py community for the excellent library
 - Supabase team for the powerful backend platform
