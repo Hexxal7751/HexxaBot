@@ -1,0 +1,6 @@
+This for all those who wonder what this folder is used for.
+This folder has no exectution at the backend but rather at Supabase's SQL editor for cennectivity from the backend to Supabase.
+This folder contains all the .sql files may will need to run the project.
+
+
+Have Fun!

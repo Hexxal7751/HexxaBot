@@ -1,0 +1,27 @@
+name: Keep Render App Alive
+
+on:
+  schedule:
+    # Run every 15 minutes
+    - cron: '*/15 * * * *'
+  workflow_dispatch: # Allow manual trigger
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Ping Render App
+      run: |
+        echo "🚀 Pinging Render app to prevent sleep..."
+        response=$(curl -s -o /dev/null -w "%{http_code}" "${{ secrets.RENDER_APP_URL }}/ping" || echo "000")
+        if [ "$response" = "200" ]; then
+          echo "✅ Ping successful (HTTP $response)"
+        else
+          echo "❌ Ping failed (HTTP $response)"
+          exit 1
+        fi
+    
+    - name: Health Check
+      run: |
+        echo "🔍 Checking app health..."
+        curl -f "${{ secrets.RENDER_APP_URL }}/health" || echo "⚠️ Health check failed"

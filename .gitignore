@@ -1,0 +1,5 @@
+# Ignore local marketing site
+Webpage/
+.env
+delete_pycache.py
+render_setup.md
