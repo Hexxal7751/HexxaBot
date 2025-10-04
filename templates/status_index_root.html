@@ -3,261 +3,635 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HexxaBot Status</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <title>HexxaBot V6 • Live Status Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         :root {
-            --bg1: #0f0c29;
-            --bg2: #302b63;
-            --bg3: #24243e;
-            --glass: rgba(23, 25, 35, 0.85);
-            --accent: #00e5ff;
-            --accent2: #a983ff;
-            --success: #4ade80;
-            --text: #fff;
-            --text-secondary: rgba(255,255,255,0.8);
-            --shadow: 0 8px 40px 0 rgba(0,229,255,0.10), 0 1.5px 8px 0 rgba(0,0,0,0.13);
+            --cyan: #00e5ff;
+            --purple: #a983ff;
+            --pink: #ff6bff;
+            --green: #4ade80;
+            --yellow: #facc15;
         }
+        
         html, body {
-            height: 100%; margin: 0; padding: 0;
-        }
-        body {
-            min-height: 100vh;
-            width: 100vw;
-            font-family: 'Inter', Arial, sans-serif;
-            background: linear-gradient(135deg, var(--bg1), var(--bg2), var(--bg3));
-            background-attachment: fixed;
+            height: 100%;
             overflow-x: hidden;
-            position: relative;
+            font-family: 'Inter', sans-serif;
+            background: #050508;
+            color: #fff;
         }
-        #particle-canvas {
+        
+        /* ===== ANIMATED BACKGROUND ===== */
+        .bg-container {
             position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
+            inset: 0;
             z-index: 0;
-            pointer-events: none;
+            overflow: hidden;
         }
-        .container {
+        
+        .gradient-mesh {
+            position: absolute;
+            inset: 0;
+            background: 
+                radial-gradient(circle at 20% 50%, rgba(0,229,255,0.15), transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(169,131,255,0.15), transparent 50%),
+                radial-gradient(circle at 40% 80%, rgba(255,107,255,0.12), transparent 50%);
+            animation: meshMove 20s ease-in-out infinite;
+            filter: blur(60px);
+        }
+        
+        @keyframes meshMove {
+            0%, 100% { transform: translate(0,0) scale(1); }
+            33% { transform: translate(30px,-40px) scale(1.1); }
+            66% { transform: translate(-40px,30px) scale(0.9); }
+        }
+        
+        #orbs-canvas {
+            position: absolute;
+            inset: 0;
+        }
+        
+        /* ===== MAIN CARD ===== */
+        .main-wrapper {
             position: relative;
-            z-index: 2;
-            margin: 5vh auto 0 auto;
-            max-width: 420px;
-            width: 95vw;
-            background: var(--glass);
-            border-radius: 2.2rem;
-            box-shadow: var(--shadow);
-            border: 2px solid rgba(0,229,255,0.07);
-            overflow: visible;
-            padding: 2.7rem 2.2rem 2.2rem 2.2rem;
-            animation: fadeInUp 1s cubic-bezier(.23,1.01,.32,1) 0.2s both;
-        }
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        .logo {
-            width: 90px; height: 90px;
-            border-radius: 50%;
-            display: block;
-            margin: 0 auto 1.2rem auto;
-            border: 3px solid var(--accent);
-            background: rgba(0,0,0,0.18);
-            transition: transform 0.3s;
-        }
-        h1 {
-            font-size: 2.1rem;
-            font-weight: 800;
-            text-align: center;
-            margin-bottom: 0.2rem;
-            background: linear-gradient(90deg, var(--accent), var(--accent2), var(--accent));
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            letter-spacing: -1px;
-        }
-        .bot-info-small {
-            text-align: center;
-            margin-bottom: 1.2rem;
-        }
-        .bot-info-small .tag {
-            color: var(--accent);
-            font-size: 1.1rem;
-            font-weight: 700;
-            letter-spacing: 0.5px;
-        }
-        .bot-info-small .active-since {
-            color: var(--text-secondary);
-            font-size: 0.95rem;
-            display: block;
-            margin-top: 0.18rem;
-        }
-        .status-badge {
+            z-index: 1;
+            min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 0.7rem;
-            background: linear-gradient(90deg, rgba(74,222,128,0.18), rgba(0,229,255,0.10));
-            color: var(--success);
-            font-weight: 700;
-            border-radius: 100px;
-            padding: 0.7rem 1.5rem;
-            font-size: 1.1rem;
-            margin: 1.5rem auto 1.2rem auto;
-            width: fit-content;
-            border: 1.5px solid rgba(74,222,128,0.22);
-            box-shadow: 0 0 18px 0 rgba(74,222,128,0.10);
-            position: relative;
+            padding: 2rem;
         }
-        .status-badge::before {
-            content: '';
-            display: inline-block;
-            width: 14px; height: 14px;
-            background: radial-gradient(circle, var(--success) 60%, #fff 100%);
-            border-radius: 50%;
-            box-shadow: 0 0 10px 2px var(--success), 0 0 0 1px #fff;
-            margin-right: 0.7rem;
-            animation: pulse 1.2s infinite ease-in-out;
-        }
-        @keyframes pulse {
-            0%, 100% { opacity: 0.7; transform: scale(0.9); }
-            50% { opacity: 1; transform: scale(1.2); }
-        }
-        .description {
-            text-align: center;
-            margin-bottom: 2.1rem;
-            color: var(--text-secondary);
-            font-size: 1.13rem;
-            line-height: 1.7;
-            max-width: 95%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .divider {
-            height: 1.5px;
-            background: linear-gradient(to right, transparent, var(--accent2), transparent);
-            margin: 2.2rem auto;
-            width: 80%;
-            border-radius: 2px;
-            opacity: 0.7;
-        }
-        .btn {
-            display: block;
-            background: linear-gradient(to right, var(--accent), #3d5afe);
-            color: white;
-            text-decoration: none;
-            font-weight: 700;
-            padding: 0.9rem 2.1rem;
-            border-radius: 10px;
-            text-align: center;
-            transition: all 0.25s cubic-bezier(.23,1.01,.32,1);
-            margin: 1.2rem auto 0 auto;
-            width: fit-content;
-            box-shadow: 0 4px 15px rgba(0, 229, 255, 0.15);
-            font-size: 1.13rem;
+        
+        .status-card {
+            max-width: 600px;
+            width: 100%;
+            background: rgba(15,15,25,0.7);
+            backdrop-filter: blur(40px);
+            border-radius: 32px;
+            border: 1px solid rgba(255,255,255,0.08);
+            padding: 3rem;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.5),
+                        0 0 80px rgba(0,229,255,0.08);
+            animation: cardEntrance 1.2s cubic-bezier(0.16,1,0.3,1);
             position: relative;
             overflow: hidden;
         }
-        .btn:hover {
-            transform: translateY(-3px) scale(1.04);
-            box-shadow: 0 8px 20px rgba(0,229,255,0.18);
-            background: linear-gradient(to right, var(--accent), #5e35b1);
+        
+        @keyframes cardEntrance {
+            0% {
+                opacity: 0;
+                transform: translateY(60px) scale(0.9);
+                filter: blur(10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+                filter: blur(0);
+            }
         }
+        
+        .status-card::before {
+            content: '';
+            position: absolute;
+            inset: -50%;
+            background: conic-gradient(
+                from 0deg,
+                transparent 0deg,
+                var(--cyan) 90deg,
+                transparent 180deg,
+                var(--purple) 270deg,
+                transparent 360deg
+            );
+            animation: rotateGlow 15s linear infinite;
+            opacity: 0.15;
+            filter: blur(40px);
+        }
+        
+        @keyframes rotateGlow {
+            100% { transform: rotate(360deg); }
+        }
+        
+        .card-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* ===== LOGO ===== */
+        .logo-container {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 2rem;
+            animation: logoFloat 3s ease-in-out infinite;
+        }
+        
+        @keyframes logoFloat {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-12px); }
+        }
+        
+        .logo-ring {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            border-radius: 50%;
+        }
+        
+        .logo-ring:nth-child(1) {
+            width: 140px;
+            height: 140px;
+            border: 3px solid var(--cyan);
+            box-shadow: 0 0 40px var(--cyan);
+            animation: ringPulse1 3s ease-in-out infinite;
+        }
+        
+        .logo-ring:nth-child(2) {
+            width: 120px;
+            height: 120px;
+            border: 2px solid var(--purple);
+            box-shadow: 0 0 30px var(--purple);
+            animation: ringPulse2 3s ease-in-out infinite 0.5s;
+        }
+        
+        @keyframes ringPulse1 {
+            0%, 100% { transform: translate(-50%,-50%) scale(1); opacity: 1; }
+            50% { transform: translate(-50%,-50%) scale(1.1); opacity: 0.7; }
+        }
+        
+        @keyframes ringPulse2 {
+            0%, 100% { transform: translate(-50%,-50%) scale(1) rotate(0deg); opacity: 0.8; }
+            50% { transform: translate(-50%,-50%) scale(0.95) rotate(180deg); opacity: 1; }
+        }
+        
+        .logo {
+            position: relative;
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            display: block;
+            margin: 20px auto;
+            border: 3px solid rgba(255,255,255,0.1);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
+            z-index: 10;
+        }
+        
+        .logo:hover {
+            transform: scale(1.15) rotate(5deg);
+        }
+        
+        /* ===== TITLE ===== */
+        .title-section {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, var(--cyan), var(--purple), var(--pink), var(--cyan));
+            background-size: 300% 100%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 8s ease-in-out infinite;
+            letter-spacing: -2px;
+            margin-bottom: 0.5rem;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+        
+        .version-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, rgba(0,229,255,0.2), rgba(169,131,255,0.2));
+            color: var(--cyan);
+            font-weight: 700;
+            font-size: 0.85rem;
+            padding: 0.4rem 1rem;
+            border-radius: 100px;
+            border: 1px solid rgba(0,229,255,0.3);
+            font-family: 'JetBrains Mono', monospace;
+            letter-spacing: 1px;
+            animation: versionPulse 2s ease-in-out infinite;
+            box-shadow: 0 0 20px rgba(0,229,255,0.2);
+        }
+        
+        @keyframes versionPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        /* ===== STATUS ===== */
+        .status-row {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+            padding: 1.2rem;
+            background: linear-gradient(135deg, rgba(74,222,128,0.08), rgba(0,229,255,0.08));
+            border-radius: 20px;
+            border: 1px solid rgba(74,222,128,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .status-row::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        
+        .status-dot {
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--green);
+            box-shadow: 0 0 20px var(--green), 0 0 40px var(--green);
+            animation: statusBeat 1.5s cubic-bezier(0.4,0,0.6,1) infinite;
+            position: relative;
+        }
+        
+        .status-dot::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            border-radius: 50%;
+            background: var(--green);
+            animation: statusRipple 1.5s ease-out infinite;
+        }
+        
+        @keyframes statusBeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.3); }
+        }
+        
+        @keyframes statusRipple {
+            0% { transform: scale(1); opacity: 0.8; }
+            100% { transform: scale(3); opacity: 0; }
+        }
+        
+        .status-text {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--green);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        /* ===== STATS GRID ===== */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .stat-card {
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.06);
+            border-radius: 16px;
+            padding: 1.2rem;
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.34,1.56,0.64,1);
+            animation: statFadeIn 0.8s ease-out backwards;
+        }
+        
+        .stat-card:nth-child(1) { animation-delay: 0.1s; }
+        .stat-card:nth-child(2) { animation-delay: 0.2s; }
+        .stat-card:nth-child(3) { animation-delay: 0.3s; }
+        
+        @keyframes statFadeIn {
+            0% { opacity: 0; transform: translateY(20px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-8px) scale(1.05);
+            background: rgba(255,255,255,0.06);
+            border-color: var(--cyan);
+            box-shadow: 0 20px 40px rgba(0,229,255,0.2);
+        }
+        
+        .stat-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            animation: iconBounce 2s ease-in-out infinite;
+        }
+        
+        @keyframes iconBounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--cyan), var(--purple));
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .stat-label {
+            font-size: 0.75rem;
+            color: rgba(255,255,255,0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 0.3rem;
+        }
+        
+        /* ===== DESCRIPTION ===== */
+        .description {
+            text-align: center;
+            line-height: 1.8;
+            color: rgba(255,255,255,0.7);
+            font-size: 1.05rem;
+            margin: 2rem 0;
+            animation: fadeIn 1s ease-out 0.5s backwards;
+        }
+        
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        
+        .highlight {
+            color: var(--purple);
+            font-weight: 600;
+        }
+        
+        /* ===== DIVIDER ===== */
+        .divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--cyan), var(--purple), transparent);
+            margin: 2rem 0;
+            border-radius: 2px;
+            animation: dividerGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes dividerGlow {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; box-shadow: 0 0 20px var(--cyan); }
+        }
+        
+        /* ===== BUTTONS ===== */
+        .btn-row {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, var(--cyan), var(--purple));
+            color: #fff;
+            text-decoration: none;
+            font-weight: 700;
+            padding: 0.9rem 1.8rem;
+            border-radius: 12px;
+            transition: all 0.3s cubic-bezier(0.34,1.56,0.64,1);
+            box-shadow: 0 4px 15px rgba(0,229,255,0.3);
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--purple), var(--pink));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-4px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(0,229,255,0.4);
+        }
+        
+        .btn:hover::before {
+            opacity: 1;
+        }
+        
+        .btn span {
+            position: relative;
+            z-index: 1;
+        }
+        
+        .btn-secondary {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .btn-secondary::before {
+            background: rgba(255,255,255,0.1);
+        }
+        
+        /* ===== FOOTER ===== */
         .footer {
             margin-top: 2.5rem;
-            color: var(--text-secondary);
-            font-size: 1.01rem;
             text-align: center;
-            opacity: 0.85;
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+            animation: fadeIn 1.2s ease-out 0.8s backwards;
         }
-        @media (max-width: 600px) {
-            .container {
-                padding: 1.2rem 0.5rem;
-            }
-            h1 {
-                font-size: 1.5rem;
-            }
-            .btn {
-                padding: 0.7rem 1.2rem;
-            }
-            .bot-info-small .tag {
-                font-size: 0.95rem;
-            }
-            .bot-info-small .active-since {
-                font-size: 0.8rem;
-            }
+        
+        .footer-highlight {
+            color: var(--cyan);
+            font-weight: 600;
+        }
+        
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.5rem; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .status-card { padding: 2rem 1.5rem; }
+            .btn-row { flex-direction: column; }
         }
     </style>
 </head>
 <body>
-    <canvas id="particle-canvas"></canvas>
-    <div class="container">
-        <img src="https://c.tenor.com/Gi6nUuPXyXQAAAAd/tenor.gif" alt="HexxaBot Logo" class="logo">
-        <h1>HexxaBot</h1>
-        <div class="bot-info-small">
-            <span class="tag">HexxaBot#0295</span>
-            <span class="active-since">Active Since: 18th Feb 2025</span>
-        </div>
-        <div class="status-badge">
-            Service Online
-        </div>
-        <p class="description">
-            This is the status page for <b>HexxaBot</b>, a Discord gaming bot bringing interactive fun and friendly competition to your server.<br>
-            <span style="color:var(--accent2);font-weight:600;">The bot is online, running smoothly, and ready to serve your commands!</span>
-        </p>
-        <div class="divider"></div>
-        <a href="https://hexxabot.netlify.app" class="btn">Visit Main Website</a>
-        <p class="footer">
-            &copy; 2025 HexxaBot<br>
-            <span style="color:var(--accent);font-weight:600;">Status. Magic. Fun. Always evolving.</span>
-        </p>
+    <div class="bg-container">
+        <div class="gradient-mesh"></div>
+        <canvas id="orbs-canvas"></canvas>
     </div>
+    
+    <div class="main-wrapper">
+        <div class="status-card">
+            <div class="card-content">
+                <div class="logo-container">
+                    <div class="logo-ring"></div>
+                    <div class="logo-ring"></div>
+                    <img src="https://c.tenor.com/Gi6nUuPXyXQAAAAd/tenor.gif" alt="HexxaBot Logo" class="logo">
+                </div>
+                
+                <div class="title-section">
+                    <h1>HexxaBot</h1>
+                    <span class="version-badge">VERSION 6.0.0</span>
+                </div>
+                
+                <div class="status-row">
+                    <div class="status-dot"></div>
+                    <span class="status-text">Online & Active</span>
+                </div>
+                
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">⚡</div>
+                        <div class="stat-value">99.9%</div>
+                        <div class="stat-label">Uptime</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🎮</div>
+                        <div class="stat-value">6</div>
+                        <div class="stat-label">Games</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🚀</div>
+                        <div class="stat-value">&lt;50ms</div>
+                        <div class="stat-label">Response</div>
+                    </div>
+                </div>
+                
+                <p class="description">
+                    This is the live status portal for <strong>HexxaBot V6</strong>, a next-generation Discord gaming bot delivering
+                    <span class="highlight">interactive entertainment</span>, 
+                    <span class="highlight">economy systems</span>, and 
+                    <span class="highlight">competitive mini-games</span> 
+                    to your community. All systems operational and ready to engage! 🎉
+                </p>
+                
+                <div class="divider"></div>
+                
+                <div class="btn-row">
+                    <a href="https://hexxabot.netlify.app" class="btn">
+                        <span>🌐</span>
+                        <span>Visit Website</span>
+                    </a>
+                    <a href="https://hexxabot.netlify.app/guide" class="btn btn-secondary">
+                        <span>📚</span>
+                        <span>View Guide</span>
+                    </a>
+                </div>
+                
+                <div class="footer">
+                    <p>&copy; 2025 HexxaBot V6</p>
+                    <p><span class="footer-highlight">Innovating. Engaging. Evolving.</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
     <script>
-    // Subtle animated particle background (not interactive)
-    const canvas = document.getElementById('particle-canvas');
-    const ctx = canvas.getContext('2d');
-    let w = window.innerWidth, h = window.innerHeight;
-    function resize() {
-        w = window.innerWidth; h = window.innerHeight;
-        canvas.width = w * window.devicePixelRatio;
-        canvas.height = h * window.devicePixelRatio;
-        canvas.style.width = w + 'px';
-        canvas.style.height = h + 'px';
-        ctx.setTransform(window.devicePixelRatio,0,0,window.devicePixelRatio,0,0);
-    }
-    window.addEventListener('resize', resize);
-    resize();
-    // Particle system
-    const particles = [];
-    const colors = ['#00e5ff','#a983ff','#4ade80','#fff'];
-    for(let i=0;i<32;i++){
-        particles.push({
-            x: Math.random()*w, y: Math.random()*h,
-            r: Math.random()*2.5+1.5,
-            c: colors[Math.floor(Math.random()*colors.length)],
-            dx: (Math.random()-0.5)*0.2,
-            dy: (Math.random()-0.5)*0.2,
-            o: Math.random()*0.5+0.3
-        });
-    }
-    function drawParticles(){
-        ctx.clearRect(0,0,w,h);
-        for(const p of particles){
-            ctx.globalAlpha = p.o;
-            ctx.beginPath();
-            ctx.arc(p.x,p.y,p.r,0,2*Math.PI);
-            ctx.fillStyle = p.c;
-            ctx.shadowColor = p.c;
-            ctx.shadowBlur = 8;
-            ctx.fill();
-            ctx.shadowBlur = 0;
-            // Animate
-            p.x += p.dx; p.y += p.dy;
-            if(p.x<0||p.x>w) p.dx*=-1;
-            if(p.y<0||p.y>h) p.dy*=-1;
+        // Floating orbs animation
+        const canvas = document.getElementById('orbs-canvas');
+        const ctx = canvas.getContext('2d');
+        let w = window.innerWidth;
+        let h = window.innerHeight;
+        
+        function resize() {
+            w = window.innerWidth;
+            h = window.innerHeight;
+            canvas.width = w * window.devicePixelRatio;
+            canvas.height = h * window.devicePixelRatio;
+            canvas.style.width = w + 'px';
+            canvas.style.height = h + 'px';
+            ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
         }
-        ctx.globalAlpha = 1;
-        requestAnimationFrame(drawParticles);
-    }
-    drawParticles();
+        
+        window.addEventListener('resize', resize);
+        resize();
+        
+        // Create orbs
+        const orbs = [];
+        const colors = ['#00e5ff', '#a983ff', '#ff6bff', '#4ade80'];
+        
+        for (let i = 0; i < 40; i++) {
+            orbs.push({
+                x: Math.random() * w,
+                y: Math.random() * h,
+                r: Math.random() * 3 + 1,
+                c: colors[Math.floor(Math.random() * colors.length)],
+                vx: (Math.random() - 0.5) * 0.3,
+                vy: (Math.random() - 0.5) * 0.3,
+                o: Math.random() * 0.6 + 0.2
+            });
+        }
+        
+        function drawOrbs() {
+            ctx.clearRect(0, 0, w, h);
+            
+            orbs.forEach(orb => {
+                ctx.globalAlpha = orb.o;
+                ctx.beginPath();
+                ctx.arc(orb.x, orb.y, orb.r, 0, Math.PI * 2);
+                ctx.fillStyle = orb.c;
+                ctx.shadowColor = orb.c;
+                ctx.shadowBlur = 15;
+                ctx.fill();
+                ctx.shadowBlur = 0;
+                
+                // Update position
+                orb.x += orb.vx;
+                orb.y += orb.vy;
+                
+                // Bounce off edges
+                if (orb.x < 0 || orb.x > w) orb.vx *= -1;
+                if (orb.y < 0 || orb.y > h) orb.vy *= -1;
+                
+                // Keep in bounds
+                orb.x = Math.max(0, Math.min(w, orb.x));
+                orb.y = Math.max(0, Math.min(h, orb.y));
+            });
+            
+            // Draw connections
+            ctx.globalAlpha = 0.15;
+            orbs.forEach((orb1, i) => {
+                orbs.slice(i + 1).forEach(orb2 => {
+                    const dx = orb1.x - orb2.x;
+                    const dy = orb1.y - orb2.y;
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    
+                    if (dist < 150) {
+                        ctx.beginPath();
+                        ctx.moveTo(orb1.x, orb1.y);
+                        ctx.lineTo(orb2.x, orb2.y);
+                        ctx.strokeStyle = orb1.c;
+                        ctx.lineWidth = 1;
+                        ctx.stroke();
+                    }
+                });
+            });
+            
+            ctx.globalAlpha = 1;
+            requestAnimationFrame(drawOrbs);
+        }
+        
+        drawOrbs();
     </script>
 </body>
-</html> 
+</html>
