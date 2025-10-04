@@ -98,5 +98,5 @@ roulette.setup(bot, supabase)
 job.setup(bot, supabase)
 
 # Keep bot alive with Supabase keepalive
-keep_alive(supabase)
+keep_alive(supabase, bot)
 bot.run(TOKEN)
