@@ -120,6 +120,9 @@
             height: 140px;
             margin: 0 auto clamp(1.5rem, 4vw, 2.5rem);
             animation: logoFloat 3s ease-in-out infinite;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         @keyframes logoFloat {
@@ -167,7 +170,7 @@
             height: 100px;
             border-radius: 50%;
             display: block;
-            margin: 20px auto;
+            margin: 0;
             border: 3px solid rgba(255,255,255,0.1);
             box-shadow: 0 12px 40px rgba(0,0,0,0.5);
             transition: transform 0.4s cubic-bezier(0.34,1.56,0.64,1);
@@ -309,9 +312,11 @@
 
         .metrics-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 1rem;
             margin: clamp(1.5rem, 4vw, 2.5rem) 0;
+            justify-content: center;
+            justify-items: center;
         }
 
         .metric-card {
